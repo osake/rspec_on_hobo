@@ -1,0 +1,28 @@
+Description:
+    The hobo_model_resource generator creates stubs for a new model with REST.
+
+    The generator takes a model name as its argument.  The model name may be
+    given in CamelCase or under_score and should not be suffixed with 'Model'.
+
+    As additional parameters, the generator will take attribute pairs described 
+    by name and type. These attributes will be used to prepopulate the migration 
+    to create the table for the model and give you a set of predefined fixture.    
+    You don't have to think up all attributes up front, but it's a good idea of 
+    adding just the baseline of what's needed to start really working with the resource.
+
+    The generator creates a model class in app/models, an RSpec spec in
+    spec/models, database fixtures in spec/fixtures/plural_name.yml, and a migration
+    in db/migrate.
+
+Example:
+    ./script/generate hobo_model_resource Account
+
+    This will create an Account model:
+        Model:      app/models/account.rb
+        Spec:       spec/models/account_spec.rb
+        Fixtures:   spec/fixtures/accounts.yml
+        Migration:  db/migrate/XXX_add_accounts.rb
+
+    ./script/generate hobo_model_resource post title:string created_on:date body:text published:boolean
+
+	Creates post model with predefined attributes.

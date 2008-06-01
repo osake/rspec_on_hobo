@@ -1,4 +1,6 @@
-* I really, REALLY, need to improve my coding by DRYing up these generators.
+- I really, REALLY, need to improve my coding by DRYing up these generators.
   The problem is that I don't understand how to inherit what the hobo
   generators already do and after they're done, kick out some nice rspec
   templates to get our testing jumpstarted.
+- Figure out what really needs to be in Rakefile
+

@@ -1,3 +1,6 @@
+# What's this do, and why do I care (it's in rspec_on_rails model generators)
+# require 'rails_generator/generators/components/model/model_generator'
+
 class HoboModelResourceGenerator < Rails::Generator::NamedBase
 
   default_options :skip_timestamps => false
@@ -39,8 +42,14 @@ class HoboModelResourceGenerator < Rails::Generator::NamedBase
       m.directory(File.join('app/controllers', controller_class_path))
       m.directory(File.join('app/helpers', controller_class_path))
       m.directory(File.join('app/views', controller_class_path, controller_file_name))
-      m.directory(File.join('test/functional', controller_class_path))
-      m.directory(File.join('test/unit', class_path))
+      # === CHECKME ===
+      # Okay, so here, I'm thinking we forego the Test::Unit
+      # again, I need to work out the fuzzy details on just extending the hobo
+      # generators
+      # m.directory(File.join('test/functional', controller_class_path))
+      # m.directory(File.join('test/unit', class_path))
+      m.directory File.join('spec/models', class_path)
+      m.directory File.join('spec/fixtures', class_path)
 
       m.dependency 'hobo_model', [name] + @args, :collision => :skip
 
@@ -48,8 +57,12 @@ class HoboModelResourceGenerator < Rails::Generator::NamedBase
         'controller.rb', File.join('app/controllers', controller_class_path, "#{controller_file_name}_controller.rb")
       )
 
-      m.template('functional_test.rb', File.join('test/functional', controller_class_path, "#{controller_file_name}_controller_test.rb"))
+      # === CHECKME ===
+      # More of that ol' Test::Unit
+      # m.template('functional_test.rb', File.join('test/functional', controller_class_path, "#{controller_file_name}_controller_test.rb"))
       m.template('helper.rb',          File.join('app/helpers',     controller_class_path, "#{controller_file_name}_helper.rb"))
+      m.template 'model:fixtures.yml',  File.join('spec/fixtures', class_path, "#{table_name}.yml")
+      m.template 'model_spec.rb',       File.join('spec/models', class_path, "#{file_name}_spec.rb")
     end
   end
 
