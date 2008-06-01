@@ -1,5 +1,5 @@
 Description:
-    The hobo_model_resource generator creates stubs for a new model with REST.
+    The hobo_model_resource_spec generator creates stubs for a new model with REST.
 
     The generator takes a model name as its argument.  The model name may be
     given in CamelCase or under_score and should not be suffixed with 'Model'.
@@ -15,7 +15,7 @@ Description:
     in db/migrate.
 
 Example:
-    ./script/generate hobo_model_resource Account
+    ./script/generate hobo_model_resource_spec Account
 
     This will create an Account model:
         Model:      app/models/account.rb
@@ -23,6 +23,6 @@ Example:
         Fixtures:   spec/fixtures/accounts.yml
         Migration:  db/migrate/XXX_add_accounts.rb
 
-    ./script/generate hobo_model_resource post title:string created_on:date body:text published:boolean
+    ./script/generate hobo_model_resource_spec post title:string created_on:date body:text published:boolean
 
 	Creates post model with predefined attributes.

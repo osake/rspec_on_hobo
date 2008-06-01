@@ -1,7 +1,7 @@
 # What's this do, and why do I care (it's in rspec_on_rails model generators)
 # require 'rails_generator/generators/components/model/model_generator'
 
-class HoboModelResourceGenerator < Rails::Generator::NamedBase
+class HoboModelResourceSpecGenerator < Rails::Generator::NamedBase
 
   default_options :skip_timestamps => false
 
